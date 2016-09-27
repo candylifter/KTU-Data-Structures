@@ -23,7 +23,9 @@ public class C_Sveikintojas {
             case "ENG": ats = "Hello world, I am "     + vardas; break;
             case "SWE": ats = "Hallå världen, jag är " + vardas; break;
             case "GRE": ats = "Γεια κόσμος, είμαι ο "  + vardas; break;
-            case "RUS": ats = "Привет мир, Я "         + vardas; 
+            case "RUS": ats = "Привет мир, Я "         + vardas; break;
+            case "JAP": ats = "こんにちは、私は "         + vardas; break;
+            case "CHN": ats = "世界，你好，我是 "         + vardas; break;
             default:    ats = "Atsiprašau - nesupratau";
         }   
         System.out.println(ats);
@@ -34,10 +36,14 @@ public class C_Sveikintojas {
         C_Sveikintojas s2 = new C_Sveikintojas("Gustav", "SWE");
         C_Sveikintojas s3 = new C_Sveikintojas("Eradonus", "GRE");
         C_Sveikintojas s4 = new C_Sveikintojas("Иван", "RUS");
+        C_Sveikintojas s5 = new C_Sveikintojas("Japonas", "JAP");
+        C_Sveikintojas s6 = new C_Sveikintojas("Kinas", "CHN");
         s0.sveikintis();
         s1.sveikintis();
         s2.sveikintis();
         s3.sveikintis();
         s4.sveikintis();
+        s5.sveikintis();
+        s6.sveikintis();
     }    
 }

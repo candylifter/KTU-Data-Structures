@@ -21,20 +21,24 @@ public class B_Labas {
             case "ENG": atsakymas = "Hello WORLD";   break;
             case "SWE": atsakymas = "Hallå världen"; break;
             case "GRE": atsakymas = "Γεια κόσμος";   break;
-            case "FRA": atsakymas = "Bonjour tout le monde";    
+            case "FRA": atsakymas = "Bonjour tout le monde"; break;    
             case "RUS": atsakymas = "привет мир";    break;
             default:    atsakymas = "Atsiprašau - nesupratau";
         }   
         System.out.println("Kalba " + kalba + ":  " + atsakymas);
     }
 
-	double skaičiuotiKambarioTūrį(double ilgis, double plotis, double aukštis){
+    double skaičiuotiKambarioTūrį(double ilgis, double plotis, double aukštis){
         // surašykite reikiamus veiksmus ir išbandykite
-        return 0 ;
+        double tūris = ilgis * plotis * aukštis;
+        
+        return tūris;
     }
     double atstumasTarpTaškų(int x1, int y1, int x2, int y2){
         // surašykite reikiamus veiksmus ir išbandykite
-        return 0;
+        double atstumas = Math.sqrt((x2 - x1)^2 + (y2 - y1)^2);
+        
+        return atstumas;
     }
 	
     void demo(){
@@ -42,12 +46,21 @@ public class B_Labas {
         sveikintis("SWE");
         sveikintis("GRE");
         sveikintis("LAT");
-        sveikintis("FRA");   // kodėl ne taip, kur klaida?  
+        sveikintis("FRA");   // kodėl ne taip, kur klaida?  - trūko break;
+        
+        double tūris = skaičiuotiKambarioTūrį(2, 3, 5);
+        System.out.println(tūris);
+
+        double atstumas = atstumasTarpTaškų(10, 15, 5, 1);
+        System.out.println(atstumas);
     }
     public static void main(String[] args) {
 //        B_Labas o = new B_Labas(); // sukuriamas pagalbinis objektas o
 //        o.demo();
         // galimas alternatyvinis varijantas vienoje eilutėje, išbandykite
 //        new B_Labas().demo();
+
+        B_Labas o = new B_Labas();
+        o.demo();
     }    
 }

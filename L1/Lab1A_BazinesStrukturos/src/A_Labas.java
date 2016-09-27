@@ -19,8 +19,10 @@ public class A_Labas {
             case "USA": atsakymas = "Hello WORLD";   break;
             case "SWE": atsakymas = "Hallå världen"; break;
             case "GRE": atsakymas = "Γεια κόσμος";   break;
-            case "FRA": atsakymas = "Bonjour tout le monde";    
+            case "FRA": atsakymas = "Bonjour tout le monde"; break;    
             case "RUS": atsakymas = "привет мир";    break;
+            case "JAP": atsakymas = "こんにちは世界"; break;
+            case "CHN": atsakymas = "你好世界"; break;
             default:    atsakymas = "Atsiprašau - nesupratau";
         }   
         System.out.println(atsakymas);
@@ -29,6 +31,8 @@ public class A_Labas {
         sveikintis();
         sveikintis("GRE");
         sveikintis("LAT");
-        sveikintis("FRA");   // kodėl ne taip, kur klaida?
+        sveikintis("FRA");   // kodėl ne taip, kur klaida? - trūko break;
+        sveikintis("JAP");
+        sveikintis("CHN");
     }    
 }

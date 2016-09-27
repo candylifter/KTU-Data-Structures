@@ -13,6 +13,9 @@ public class D_Kasa {
     private static final char euroSym = 0x20AC;  // euro unicodo reikšmė
     private static int pradinisNr;               // pradinė reikšmė = 0
     private int kasosNr;
+    private int pirkimųKiekis;
+    private int prekiųKiekis;
+    private double vidutinėPirkimoKaina;
     private static void incrementNr(){
         pradinisNr++;
     }
@@ -20,9 +23,19 @@ public class D_Kasa {
     public double getKaupiamaSuma(){
         return kaupiamaSuma;
     }
+    
+    double getVidutinėPirkimoKaina() {
+        return kaupiamaSuma / pirkimųKiekis;
+    }
+    
+    double getVidutinėPrekėsKaina() {
+        return kaupiamaSuma / prekiųKiekis;
+    }
     // konstruktorius, kai sukuriama kasa su unikaliu didėjančiu numeriu
     public D_Kasa() {
         kasosNr = pradinisNr; // naujos kasos numeris pastoviai didės
+        pirkimųKiekis = 0;
+        prekiųKiekis = 0;
         incrementNr();
     }
     // konstruktorius, kai sukuriama kasa su nurodytu numeriu
@@ -32,24 +45,34 @@ public class D_Kasa {
     // prideda vienos prekės kainą
     double sumuoti(double kaina){
         kaupiamaSuma += kaina;
+        pirkimųKiekis++;
+        prekiųKiekis++;
         System.out.println("Kasoje nr." + kasosNr + " yra: " +
-                kaupiamaSuma + euroSym);
+                kaupiamaSuma + euroSym + 
+                "; Pirkimų kiekis: " + pirkimųKiekis + "; prekių kiekis: " + prekiųKiekis + 
+                "; Vidutinė pirkimo kaina: " + getVidutinėPirkimoKaina() + "; Vidutinė prekės kaina: " + getVidutinėPrekėsKaina());
         return kaupiamaSuma;
     }
     // prideda nurodyto prekių kiekio kainą
     double sumuoti(double kaina, int kiekis){
+        pirkimųKiekis++; 
+        prekiųKiekis += kiekis;
+        
         return sumuoti(kaina * kiekis);
     }
     // išvaloma sukaupta suma
     double reset() { 
         kaupiamaSuma = 0;
-        return kaupiamaSuma; 
+        pirkimųKiekis = 0;
+        prekiųKiekis = 0;
+        return kaupiamaSuma;
     }
     // išbandome kaip veikia sukurti metodai
     static void trial(){
         D_Kasa s0 = new D_Kasa();
         D_Kasa s1 = new D_Kasa();
         D_Kasa s2 = new D_Kasa();
+        D_Kasa s3 = new D_Kasa();
         s0.sumuoti(5.68);
         s1.sumuoti(0.91, 2);
         s2.sumuoti(35.68);
@@ -58,7 +81,8 @@ public class D_Kasa {
         s0.sumuoti(40.0, 5);
         s1.sumuoti(50.0, 6);
         s0.reset();
-        s0.sumuoti(0.03, 100_000);        
+        s0.sumuoti(0.03, 100_000);    
+        s3.sumuoti(1.5);
     }
     public static void main(String[] args) {
         trial();
